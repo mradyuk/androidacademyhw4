@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_item_actor_height">108dp</dimen>
+    <dimen name="list_item_vertical_padding">4dp</dimen>
+    <dimen name="list_item_horizontal_padding">4dp</dimen>
+    <dimen name="avatar_size">150dp</dimen>
+    <dimen name="oscar_height">150dp</dimen>
+    <dimen name="name_horizontal_pading">16dp</dimen>
+</resources>
