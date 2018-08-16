@@ -24,7 +24,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
     private final RequestOptions imageOption;
 
-    public MovieRecyclerAdapter(Context context, List<Movie> movie) {
+    public MovieRecyclerAdapter(Context context, List<Movie> movies) {
         this.movies = movies;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,7 +51,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 
     public Movie getItem(int position) {

@@ -1,5 +1,17 @@
 package androidacademy.minsk.lecture3lists;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
+import android.view.Surface;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import androidacademy.minsk.lecture3lists.movie.Movie;
 import androidacademy.minsk.lecture3lists.movie.OMDBResponse;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,22 +24,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.util.List;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
-import android.view.Surface;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-
 public class MovieActivity extends AppCompatActivity {
 
     private MovieRecyclerAdapter movieRecyclerAdapter;
 
-    static final String BASE_URL = "http://www.omdbapi.com";
+    static final String BASE_URL = "http://omdbapi.com";
 
 
     @Override
@@ -54,7 +55,7 @@ public class MovieActivity extends AppCompatActivity {
         list.setLayoutManager(layoutManager);
 
 
-        movieRecyclerAdapter = new MovieRecyclerAdapter(MovieActivity.this, null);
+        movieRecyclerAdapter = new MovieRecyclerAdapter(MovieActivity.this, new ArrayList<>());
         list.setAdapter(movieRecyclerAdapter);
 
 
@@ -65,11 +66,11 @@ public class MovieActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
-                        .client(httpClient.build())
+                        .client(buildHttpClient())
                         .build();
 
                 OMDBService service = retrofit.create(OMDBService.class);
@@ -108,7 +109,9 @@ public class MovieActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-
+    private OkHttpClient buildHttpClient() {
+        return new OkHttpClient.Builder().build();
     }
 }
