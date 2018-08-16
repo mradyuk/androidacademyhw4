@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lecture3 Lists</string>
+    <string name="title_listview">ListView</string>
+    <string name="title_recyclerview">RecyclerView</string>
+
+    <string name="actor_click_action">%1$s selected</string>
+
+    <string name="menu_switch_list">Switch</string>
+</resources>
